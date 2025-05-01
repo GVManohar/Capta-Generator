@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    body {
+      box-sizing: border-box;
+      height: 600px;
+      background-color: #826afb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    fieldset h3 {
+      text-align: center;
+      font-family: monospace;
+      font-size: 22px;
+      color: #826afb;
+    }
+
+    fieldset {
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+        rgba(0, 0, 0, 0.05) 0px 5px 10px;
+      padding: 10px 45px 15px 45px;
+      border: none;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    [type="text"] {
+      border: solid 1.5px rgb(200, 201, 200);
+      border-radius: 7px;
+      background: none;
+      padding: 12px;
+      font-size: 17px;
+      color: rgb(100, 92, 209);
+    }
+
+    button {
+      border-radius: 7px;
+      border: none;
+      background-color: #826afb;
+      padding: 12px;
+      font-size: 17px;
+      color: #fff;
+      font-family: math;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+    }
+
+    button:active {
+      transform: scale(0.99);
+      border: none;
+    }
+
+    .input:focus {
+      outline: none;
+      border: 1.5px solid #fff;
+    }
+
+    input#capture {
+      text-align: center;
+      width: 163px;
+      background-color: rgb(240, 240, 240);
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <fieldset>
+    <h3>Captcha generator</h3>
+    <div>
+      <input type="text" id="capture" />
+      &nbsp;
+      <button type="button" title="refresh" onclick="refresh()">
+        <i class="bi bi-arrow-clockwise"></i>
+      </button>
+    </div>
+    <div>
+      <input type="text" id="cap" placeholder="Enter Captcha" title="Enter Captcha" />
+    </div>
+    <div>
+      <center>
+        <button type="submit" onclick="validation()">Submit Captcha</button>
+      </center>
+    </div>
+  </fieldset>
+  <script>
+    function refresh() {
+      let arr = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "@",
+        "$",
+      ];
+    //   let random = "";
+    //   for (let i = 0; i < 6; i++) {
+    //     let r = Math.floor(Math.random() * arr.length);
+    //     let char = arr[i];
+    //     random += char;
+    //   }
+    //   document.getElementById("capture").value = random;
+    
+    // function validation() {
+    //   var input1 = document.getElementById("capture").value;
+    //   var input2 = document.getElementById("cap").value;
+
+    //   if (input1 === "" || input2 === "") {
+    //     alert("Both input fields must be filled")
+    //     return
+    //   }
+    //   if (input1 === input2) {
+    //     window.open("https://www.google.com")
+    //   }
+    //   else {
+    //     alert("Not matching capture, please do again after 1 min..");
+    //   }
+    // }
+      let random = "";
+      for (let i = 0; i < 6; i++) {
+        let r = Math.floor(Math.random() * arr.length);
+        let char = arr[r];
+        random += char;
+      }
+      document.getElementById("capture").value = random;
+    }
+    function validation() {
+      var input1 = document.getElementById("capture").value;
+      var input2 = document.getElementById("cap").value;
+
+      if (input1 === "" || input2 === "") {
+        alert("Both input fields must be filled");
+        return;
+      }
+      if (input1 === input2) {
+        window.open("https://www.google.com");
+      } else {
+        alert("Not matching capture, please do again after 1 min..");
+      }
+  }
+  </script>
+</body>
+
+</html>
